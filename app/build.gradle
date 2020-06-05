@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.alan.weatherstation"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+    dataBinding {
+        enabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Fuel for http
+    implementation 'com.github.kittinunf.fuel:fuel:2.2.1' //Core package
+    implementation 'com.github.kittinunf.fuel:fuel-android:2.2.1' //Android
+    implementation 'com.github.kittinunf.fuel:fuel-gson:2.2.1' //Fuel Gson
+    implementation 'com.github.kittinunf.fuel:fuel-coroutines:2.2.1'
+    implementation 'com.google.code.gson:gson:2.8.5' //Gson
+    implementation 'com.github.kittinunf.fuel:fuel-json:2.2.1'
+
+    kapt 'com.android.databinding:compiler:3.1.4'
+    //kapt 'com.github.bumptech.glide:compiler:4.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+}
